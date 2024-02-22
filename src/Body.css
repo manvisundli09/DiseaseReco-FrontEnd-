@@ -1,0 +1,254 @@
+#body{
+    /* height: 100%; */
+    background-color: white;
+}
+#body img{
+    width: 100%;
+    z-index: 3;
+}
+
+
+#key-achievements {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#key-achievements .heading h1 {
+    text-align: center;
+    font-size: 3rem;
+    color: black;
+    display: block;
+}
+
+#key-achievements .heading h1 span {
+    color: rgb(6, 6, 110);
+    text-decoration: dashed;
+    line-height: 100px;
+}
+
+#key-achievements .heading .p-primary {
+    text-align: center;
+}
+
+.achievements {
+    padding: 3rem 2rem;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.achievements li {
+    list-style-type: none;
+    transition: 0.7s;
+    padding: 10px;
+}
+
+.achievements li:hover {
+    transform: scale(1.1);
+}
+
+.achievements li .text {
+    font-size: 1.7rem;
+    margin: 0px;
+    visibility: hidden;
+    position: absolute;
+    top: 0px;
+    z-index: 2;
+    padding: 270px 5px 5px 5px;
+}
+
+.achievements li .text:hover {
+    color: white;
+    font-weight: 700;
+    background-color: rgba(0, 0, 0, 0);
+    z-index: 1;
+    visibility: visible;
+}
+
+.achievements .heading-name {
+    font-size: 1rem;
+    font-weight: 600;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border: 1px dotted;
+    border-top: 0px;
+    text-align: center;
+    padding: 5px;
+}
+
+#key-achievements .achievements li img {
+    width: 100%;
+    border-radius: 30px;
+    z-index: 1;
+    height: 70%;
+}
+
+
+
+/*------------------------------------------------------------------------------------------------------*/
+
+
+.third {
+    display: flex;
+    padding: 0px 70px 0px 70px;
+    background-color: white;
+}
+
+.third .left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 30px;
+}
+
+
+.third .left .searchbar input{
+    width: 70%;
+    height: 2.5rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 20px;
+    background-color: grey;
+    color: white;
+    font-style: italic;
+    font-weight: 500;
+    padding: 10px;
+}
+.third .left .searchbar i{
+    color: white;
+    font-size: 1.3rem;
+    margin-left:15px;
+    padding:10px;
+    border-radius: 50%;
+    background-color: tomato;
+    border-right: 2px solid white;
+    border-left: 2px solid white;
+    cursor: pointer;
+    transition: 0.9s;
+}
+.third .left .searchbar i:hover{
+    transform: scale(1.2);
+}
+
+.third .right {
+    width: 42%;
+    margin: 0;
+    padding: 50px 0px 0px 0px;
+}
+
+.imgs {
+    width: 45%;
+}
+
+.third .right img{
+    transition: 0.9s;
+}
+
+.third .right img:hover{
+    width: 42%;
+}
+
+#img-1{
+    position: relative;
+    border-top-left-radius: 30px;
+    border-bottom: 4px solid white;
+    animation-name: display;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-duration: 3s;
+    opacity: 0;
+    top: 340px;
+    left: 94px;
+    z-index: 0;
+}
+#img-2{
+    border-top-right-radius:30px;
+    position: relative;
+    border-bottom: 4px solid white;
+    animation-name: display;
+    animation-delay: 2s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-duration: 3s;
+    opacity: 0;
+    top: 340px;
+    right: 44px;
+    z-index: 0;
+}
+#img-3{
+    position: relative;
+    border-bottom: 4px solid white;
+    animation-name: display;
+    animation-delay: 3s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-duration: 3s;
+    opacity: 0;
+    top: 200px;
+    left: 94px;
+    z-index: 0;
+}
+#img-4{
+    position: relative;
+    border-bottom: 4px solid white;
+    animation-name: display;
+    animation-delay: 4s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-duration: 4s;
+    opacity: 0;
+    top: 200px;
+    right: 44px;
+    z-index: 0;
+}
+#img-5{
+    border-bottom-left-radius:30px;
+    position: relative;
+    border-bottom: 4px solid white;
+    animation-name: display;
+    animation-delay: 5s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-duration: 5s;
+    opacity: 0;
+    top: 100px;
+    left: 94px;
+    z-index: 0;
+}
+#img-6{
+    border-bottom-left-radius:30px;
+    position: relative;
+    border-bottom: 4px solid white;
+    animation-name: display;
+    animation-delay: 6s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-duration: 6s;
+    opacity: 0;
+    top: 100px;
+    right: 94px;
+    z-index: 0;
+}
+
+@keyframes display{
+    from{
+        opacity: 0;
+    }
+    to{
+        rotate: 360deg;
+        top: 0px;
+        left: 0px;
+        opacity: 1;
+    }
+}
+
+.third .right .box i{
+    color: white;
+    font-size: 6rem;
+    text-align: center;
+    z-index: 3;
+}
