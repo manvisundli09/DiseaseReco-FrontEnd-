@@ -9,7 +9,7 @@ function Header() {
         <nav id="navbar">
         <div class="h-primary" id="logo">
             <li type="none">
-                <a href="https://my.matterport.com/show/?m=GPaMwJqXQaH&mls=1"><span>DiseaseReco</span><img src='https://cdn-icons-png.flaticon.com/512/5169/5169269.png'></img></a>
+                <a href="https://my.matterport.com/show/?m=GPaMwJqXQaH&mls=1"><span>DiseaseReco</span><img src='https://cdn-icons-png.flaticon.com/512/5169/5169269.png' alt=""></img></a>
             
         </li>
         </div>

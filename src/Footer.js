@@ -11,19 +11,19 @@ function Footer() {
         </div>
         <div className="social-links">
             <li className="social">
-              <a href="#">
+              <a href="https://github.com/manvisundli09" aria-label="GitHub">
                 <img src="https://icones.pro/wp-content/uploads/2021/06/icone-github-jaune.png" width="16" height="16" alt="GitHub" />
               </a>
               <h6><Link to='https://github.com/manvisundli09'>Manvi Sundli</Link></h6>
             </li>
             <li className="social">
-              <a href="#">
+              <a href="https://github.com">
                 <img src="https://icones.pro/wp-content/uploads/2021/06/icone-github-jaune.png" width="16" height="16" alt="GitHub" />
               </a>
               <h6><Link to='https://github.com'>Stemy Tomy</Link></h6>
             </li>
             <li className="social">
-              <a href="#">
+              <a href="https://github.com'">
                 <img src="https://icones.pro/wp-content/uploads/2021/06/icone-github-jaune.png" width="16" height="16" alt="GitHub" />
               </a>
               <h6><Link to='https://github.com'>Nilotpal Dwivedi</Link></h6>
