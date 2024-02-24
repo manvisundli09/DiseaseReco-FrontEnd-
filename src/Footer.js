@@ -17,10 +17,10 @@ function Footer() {
               <h6><Link to='https://github.com/manvisundli09'>Manvi Sundli</Link></h6>
             </li>
             <li className="social">
-              <a href="https://github.com">
+              <a href="https://github.com/stemma1704">
                 <img src="https://icones.pro/wp-content/uploads/2021/06/icone-github-jaune.png" width="16" height="16" alt="GitHub" />
               </a>
-              <h6><Link to='https://github.com'>Stemy Tomy</Link></h6>
+              <h6><Link to='https://github.com/stemma1704'>Stemy Tomy</Link></h6>
             </li>
             <li className="social">
               <a href="https://github.com'">

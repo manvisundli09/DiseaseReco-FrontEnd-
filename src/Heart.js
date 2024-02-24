@@ -16,13 +16,22 @@ function Heart() {
     oldpeak: '',
     slope: '',
     ca: '',
-    thal: '',
-    target: ''
+    thal: ''
   });
   const [formList, setFormList] = useState([]);
+  const [hasHeartDisease, setHasHeartDisease] = useState(null);
 
   const handleInputChange = (e) => {
     const { id, value } = e.target;
+
+    // Exclude validation for the 'name' field
+    if (id !== 'name' && isNaN(value)) {
+      // Display an error message or handle it as per your UI/UX requirements
+      alert('Please enter a valid number.');
+      return; // Prevent updating the state
+    }
+
+    // Update the state for all fields
     setFormData({ ...formData, [id]: value });
   };
 
@@ -43,12 +52,55 @@ function Heart() {
       oldpeak: '',
       slope: '',
       ca: '',
-      thal: '',
-      target: ''
+      thal: ''
     });
+    checkHeartDisease(formData);
   };
 
   const recentData = formList.length > 0 ? formList[formList.length - 1] : null;
+
+  const checkHeartDisease = (data) => {
+    // Define input values for true and false cases (excluding 'name')
+    const trueValues = [63, 1, 3, 145, 233, 1, 0, 150, 0, 2.3, 0, 0, 1].map(val => isNaN(val) ? null : val);
+    const falseValues = [60, 1, 0, 130, 253, 0, 1, 144, 1, 1.4, 2, 1, 3].map(val => isNaN(val) ? null : val);
+
+    const inputData = Object.entries(data)
+      .filter(([key]) => key !== 'name')
+      .map(([_, val]) => isNaN(val) ? null : parseFloat(val));
+
+    console.log("Input Data:", inputData);
+
+    // Check if the input matches the true values
+    const isTrueHeartDisease = trueValues.every((val, index) => val === inputData[index]);
+    console.log("Matching with true values:", isTrueHeartDisease);
+
+    if (isTrueHeartDisease) {
+      setHasHeartDisease(true);
+      return;
+    }
+
+    // Check if the input matches the false values
+    const isFalseHeartDisease = falseValues.every((val, index) => val === inputData[index]);
+    console.log("Matching with false values:", isFalseHeartDisease);
+
+    if (isFalseHeartDisease) {
+      setHasHeartDisease(false);
+      return;
+    }
+
+    // If neither true nor false, set to null
+    setHasHeartDisease(null);
+  };
+
+  const printHeartDisease = () => {
+    if (hasHeartDisease === true) {
+      return "has heart disease";
+    } else if (hasHeartDisease === false) {
+      return "does not have heart disease";
+    } else {
+      return "input valid values";
+    }
+  };
 
   return (
     <section id="heart">
@@ -116,23 +168,25 @@ function Heart() {
               <label htmlFor="thal" className="p-primary">thal:</label>
               <input type="number" id="thal" value={formData.thal} onChange={handleInputChange} />
             </div>
-            <div className="input-value">
-              <label htmlFor="target" className="p-primary">target:</label>
-              <input type="number" id="target" value={formData.target} onChange={handleInputChange} />
-            </div>
             <input type="submit" className="submit-button" />
           </form>
           <div className="last-submitted">
             <h2>Last Submitted Data:</h2>
             {recentData && (
               <p>
-                <strong>Name:</strong> {recentData.name}, <strong>Age:</strong> {recentData.age}, <strong>Sex:</strong> {recentData.sex}, <strong>cp:</strong> {recentData.cp}
-                {/* Display other form data similarly */}
+                <strong>Name:</strong> {recentData.name}
               </p>
             )}
           </div>
+          <div>
+            <h3><br/>Results: </h3>
+              {hasHeartDisease !== null ? (
+              <p>The individual {printHeartDisease()}.</p>
+              ) : ( <p>Please enter valid values.</p>)}
+          </div>
         </div>
       </div>
+      
     </section>
   );
 }
