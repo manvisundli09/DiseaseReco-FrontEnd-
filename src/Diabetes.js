@@ -2,97 +2,34 @@ import React, { useState } from 'react';
 import './Diabetes.css';
 
 function Diabetes() {
-  const [formData, setFormData] = useState({
-    name: '',
-    pregnancies: '',
-    glucose: '',
-    bloodPressure: '',
-    skinThickness: '',
-    insulin: '',
-    BMI: '',
-    diabetesPedigreeFunction: '',
-    age: ''
-  });
+  const [result, setResult] = useState('');
 
-  const [formList, setFormList] = useState([]);
-  const [hasDiabetes, setHasDiabetes] = useState(null);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
 
-  const handleInputChange = (e) => {
-    const { id, value } = e.target;
+    // Extracting only values from formData
+    
+    const values = Array.from(formData.values()).map(value => parseFloat(value));
+    const formattedValues = values.map(value => value.toFixed(2)); // Example: Round to 2 decimal places
 
-    // Exclude validation for the 'name' field
-    if (id !== 'name' && isNaN(value)) {
-      // Display an error message or handle it as per your UI/UX requirements
-      alert('Please enter a valid number.');
-      return; // Prevent updating the state
-    }
+    // Constructing query parameters string
+    const queryParams = formattedValues.join(',');
+    console.log("Form Data: ", formData);
+    console.log("Query Params: ", queryParams); // Log query parameters
 
-    // Update the state for all fields
-    setFormData({ ...formData, [id]: value });
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    setFormList([...formList, formData]);
-    setFormData({
-      name: '',
-      pregnancies: '',
-      glucose: '',
-      bloodPressure: '',
-      skinThickness: '',
-      insulin: '',
-      BMI: '',
-      diabetesPedigreeFunction: '',
-      age: ''
-    });
-    checkDiabetes(formData);
-  };
-
-  const recentData = formList.length > 0 ? formList[formList.length - 1] : null;
-
-  const checkDiabetes = (data) => {
-    // Define input values for true and false cases (excluding 'name')
-    const trueValues = [10,125,70,26,115,31.1,0.205,41].map(val => isNaN(val) ? null : val);
-    const falseValues = [13,145,82,19,110,22.2,0.245,57].map(val => isNaN(val) ? null : val);
-
-    const inputData = Object.entries(data)
-      .filter(([key]) => key !== 'name')
-      .map(([_, val]) => isNaN(val) ? null : parseFloat(val));
-
-    console.log("Input Data:", inputData);
-
-    // Check if the input matches the true values
-    const isTrueDiabetes = trueValues.every((val, index) => val === inputData[index]);
-    console.log("Matching with true values:", isTrueDiabetes);
-
-    if (isTrueDiabetes) {
-      setHasDiabetes(true);
-      return;
-    }
-
-    // Check if the input matches the false values
-    const isFalseDiabetes = falseValues.every((val, index) => val === inputData[index]);
-    console.log("Matching with false values:", isFalseDiabetes);
-
-    if (isFalseDiabetes) {
-      setHasDiabetes(false);
-      return;
-    }
-
-    // If neither true nor false, set to null
-    setHasDiabetes(null);
-  };
-
-  const printDiabetesResult = () => {
-    if (hasDiabetes === true) {
-      return "has Diabetes";
-    } else if (hasDiabetes === false) {
-      return "does not have Diabetes";
-    } else {
-      return "input valid values";
-    }
-  };
-
+  // Sending GET request to Flask server
+  fetch(`http://localhost:8080/diabetes_values/${queryParams.toString()}`)
+    .then(response => {
+      console.log("Response Status: ", response.status); // Log response status
+      return response.text();
+    })
+    .then(data => {
+      console.log("Response Data: ", data); // Log response data
+      setResult(data);
+    })
+    .catch(error => console.error('Error:', error));
+  }
   return (
     <section id="diabetes">
       <div className='heading'>
@@ -105,60 +42,46 @@ function Diabetes() {
           <form className="symptoms-form" onSubmit={handleSubmit}>
             <div className="input-value">
               <label htmlFor="name" className="p-primary">Name:</label>
-              <input type="text" id="name" value={formData.name} onChange={handleInputChange} />
+              <input type="text" id="name" />
             </div>
             <div className="input-value">
               <label htmlFor="pregnancies" className="p-primary">Pregnancies:</label>
-              <input type="number" id="pregnancies" value={formData.pregnancies} onChange={handleInputChange} />
+              <input type="text" id="pregnancies" name='pregnancies' />
             </div>
             <div className="input-value">
               <label htmlFor="glucose" className="p-primary">Glucose:</label>
-              <input type="number" id="glucose" value={formData.glucose} onChange={handleInputChange} />
+              <input type="text" id="glucose" name='glucose' />
             </div>
             <div className="input-value">
               <label htmlFor="bloodPressure" className="p-primary">BloodPressure:</label>
-              <input type="number" id="bloodPressure" value={formData.bloodPressure} onChange={handleInputChange} />
+              <input type="text" id="bloodPressure" name='bloodPressure' />
             </div>
             <div className="input-value">
               <label htmlFor="skinThickness" className="p-primary">SkinThickness:</label>
-              <input type="number" id="skinThickness" value={formData.skinThickness} onChange={handleInputChange} />
+              <input type="text" id="skinThickness" name='skinThickness' />
             </div>
             <div className="input-value">
               <label htmlFor="insulin" className="p-primary">Insulin:</label>
-              <input type="number" id="insulin" value={formData.insulin} onChange={handleInputChange} />
+              <input type="text" id="insulin" name='insulin' />
             </div>
             <div className="input-value">
               <label htmlFor="BMI" className="p-primary">BMI:</label>
-              <input type="number" id="BMI" value={formData.BMI} onChange={handleInputChange} />
+              <input type="text" id="BMI" name='bmi' />
             </div>
             <div className="input-value">
               <label htmlFor="diabetesPedigreeFunction" className="p-primary">DiabetesPedigreeFunction:</label>
-              <input type="number" id="diabetesPedigreeFunction" value={formData.diabetesPedigreeFunction} onChange={handleInputChange} />
+              <input type="text" id="diabetesPedigreeFunction" name='diabetesPedigreeFunction' />
             </div>
             <div className="input-value">
               <label htmlFor="age" className="p-primary">Age:</label>
-              <input type="number" id="age" value={formData.age} onChange={handleInputChange} />
+              <input type="text" id="age" name='age' />
             </div>
             <input type="submit" className="submit-button" />
           </form>
-          <div className="last-submitted">
-            <h2>Last Submitted Data:</h2>
-            {recentData && (
-              <p>
-                <strong>Name:</strong> {recentData.name}
-              </p>
-            )}
-          </div>
-          <div>
-            <h3>Results: </h3>
-            {hasDiabetes !== null ? (
-              <p>The individual {printDiabetesResult()}.</p>
-            ) : ( <p>Enter valid values.</p> )}
-          </div>
+          <p>{result}</p>
         </div>
       </div>
     </section>
   );
 }
-
 export default Diabetes;
