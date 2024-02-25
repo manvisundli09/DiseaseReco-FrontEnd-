@@ -23,10 +23,10 @@ function Footer() {
               <h6><Link to='https://github.com/stemma1704'>Stemy Tomy</Link></h6>
             </li>
             <li className="social">
-              <a href="https://github.com'">
+              <a href="https://github.com/oilyn0s3'">
                 <img src="https://icones.pro/wp-content/uploads/2021/06/icone-github-jaune.png" width="16" height="16" alt="GitHub" />
               </a>
-              <h6><Link to='https://github.com'>Nilotpal Dwivedi</Link></h6>
+              <h6><Link to='https://github.com/oilyn0s3'>Nilotpal Dwivedi</Link></h6>
             </li>
         </div>
         <div className="foot-options">

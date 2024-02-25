@@ -1,11 +1,12 @@
 import React from 'react';
+import DiseaseRecoImage from './image/DiseaseReco.png';
 import './Body.css';
 
 function Body() {
   return (
     <div>
       <section id="body">
-        <img src="https://vilmate.com/wp-content/uploads/2018/08/Medical_Website_Development-1.jpg" id="myimg" alt="" />
+        <img src={DiseaseRecoImage} id="myimg" alt="" />
       </section>
       <section id="key-achievements">
         <div className="heading">

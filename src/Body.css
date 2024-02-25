@@ -5,6 +5,8 @@
 #body img{
     width: 100%;
     z-index: 3;
+    height: 700px;
+    position:static;
 }
 
 
