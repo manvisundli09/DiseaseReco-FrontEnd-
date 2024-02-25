@@ -11,7 +11,13 @@
     font-size: 3rem;
     color: black;
     display: block;
-    margin-top: 25%;
+    margin-top: 5%;
+}
+
+#heart .heading img {
+    width: 35%;
+    height: 35%;
+    margin-left: 480px;
 }
 
 /* -------------------------------------------------------------------*/
@@ -74,9 +80,8 @@
     border-radius: 20px;
     background-color: black;
     font-weight: 700;
-    color: white;
-    font-size: 2rem;
-    font-family: abel;
+    color: rgb(253, 251, 251);
+    font-size: auto;
     border: 2px solid white;
 }
 

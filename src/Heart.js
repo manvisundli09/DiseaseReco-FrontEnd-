@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import heartimg from './image/heart.jpeg';
 import './Heart.css';
 
 function Heart() {
@@ -34,12 +35,12 @@ function Heart() {
   return (
     <section id="heart">
       <div className='heading'>
-        <h1>Heart Page</h1>
-        <p style={{ marginLeft: '15px' }}>This is the Heart page content.</p>
+        <h1>Heart Report Analysis</h1>
+        <img src={heartimg} id="myimg" alt="" />
       </div>
       <div className="second-page">
         <div className="symptoms">
-          <h1 className="p-primary">INPUT YOUR SYMPTOMS <span>DISEASE</span>RECO</h1>
+          <h1 className="p-primary">INPUT YOUR SYMPTOMS</h1>
           <form className="symptoms-form" onSubmit={handleSubmit}>
             <div className="input-value">
               <label htmlFor="name" className="p-primary">Name:</label>
@@ -97,7 +98,7 @@ function Heart() {
               <label htmlFor="thal" className="p-primary">thal:</label>
               <input type="text" id="thal" name='thal'  />
             </div>
-            <input type="submit" className="submit-button" />
+            <input type="submit" className="submit-button" style={{width:'45%'}} />
           </form>
           <p>{result}</p>
         </div>

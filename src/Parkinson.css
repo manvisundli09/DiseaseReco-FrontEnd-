@@ -1,4 +1,4 @@
-#diabetes {
+#parkinson {
     background-color: white;
     display: flex;
     flex-direction: column;
@@ -6,12 +6,18 @@
     align-items: center;
 }
 
-#diabetes .heading h1 {
+#parkinson .heading h1 {
     text-align: center;
     font-size: 3rem;
     color: black;
     display: block;
-    margin-top: 25%;
+    margin-top: 5%;
+}
+
+#parkinson .heading img {
+    width: 35%;
+    height: 35%;
+    margin-left: 480px;
 }
 
 /* -------------------------------------------------------------------*/

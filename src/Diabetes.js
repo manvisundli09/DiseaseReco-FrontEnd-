@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import diabetesimg from './image/diabetes.jpeg';
 import './Diabetes.css';
 
 function Diabetes() {
@@ -33,12 +34,12 @@ function Diabetes() {
   return (
     <section id="diabetes">
       <div className='heading'>
-        <h1>Diabetes Page</h1>
-        <p style={{ marginLeft: '35px' }}>This is the Diabetes page content.</p>
+        <h1>Diabetes Report Analysis</h1>
+        <img src={diabetesimg} id="myimg" alt="" />
       </div>
       <div className="second-page">
         <div className="symptoms">
-          <h1 className="p-primary">INPUT YOUR SYMPTOMS <span>DISEASE</span>RECO</h1>
+          <h1 className="p-primary">INPUT YOUR SYMPTOMS</h1>
           <form className="symptoms-form" onSubmit={handleSubmit}>
             <div className="input-value">
               <label htmlFor="name" className="p-primary">Name:</label>
@@ -76,7 +77,7 @@ function Diabetes() {
               <label htmlFor="age" className="p-primary">Age:</label>
               <input type="text" id="age" name='age' />
             </div>
-            <input type="submit" className="submit-button" />
+            <input type="submit" className="submit-button" style={{width:'45%'}} />
           </form>
           <p>{result}</p>
         </div>
